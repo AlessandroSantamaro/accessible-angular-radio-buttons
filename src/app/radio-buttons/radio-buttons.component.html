@@ -1,0 +1,76 @@
+<div class="btn-group btn-group-toggle radio-container" data-toggle="buttons">
+  <ng-container [ngSwitch]="mode">
+    <ng-container
+      *ngSwitchCase="'default'"
+      [ngTemplateOutlet]="defaultRadio"
+    ></ng-container>
+    <ng-container
+      *ngSwitchCase="'buttons'"
+      [ngTemplateOutlet]="buttonRadio"
+    ></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #defaultRadio>
+  <div>
+    <fieldset class="fieldset-contents">
+      <legend><h2>{{title}}</h2></legend>
+
+      <div class="radio-buttons">
+        <div
+          class="radio-button"
+          [ngClass]="radioGroupDisabled ? 'disabled' : ''"
+          *ngFor="let button of radioButtons; let i = index; trackBy: i"
+        >
+          <input
+            type="radio"
+            name="radios"
+            class="radio-item radio-{{i}}"
+            [id]="button.id"
+            [value]="button.id"
+            [(ngModel)]="idButtonSelected"
+            [disabled]="radioGroupDisabled"
+            (click)="onRadioCallToAction(button)"
+            #radioInput
+          />
+          <label [attr.for]="button.id" class="button-label">{{button.label}}</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</ng-template>
+
+<ng-template #buttonRadio>
+  <div
+    role="radiogroup"
+    aria-labelledby="buttonLabelId"
+    [attr.aria-disabled]="radioGroupDisabled"
+  >
+    <fieldset class="fieldset-contents">
+      <legend><h2 id="buttonLabelId">{{title}}</h2></legend>
+
+      <div class="radio-buttons">
+        <div
+          class="radio-button"
+          [ngClass]="radioGroupDisabled ? 'disabled' : ''"
+          *ngFor="let button of radioButtons; let i = index; trackBy: i"
+        >
+          <div
+            role="radio"
+            class="radio-button-item radio-{{i}}"
+            [ngClass]="{'disabled': radioGroupDisabled}"
+            [attr.aria-checked]="button.id === idButtonSelected"
+            [attr.tabindex]="button.id === tabIndexButton && !radioGroupDisabled ? 0 : -1"
+            [attr.aria-disabled]="radioGroupDisabled"
+            [attr.disabled]="radioGroupDisabled"
+            (click)="onRadioCallToAction(button)"
+            (keydown)="onRadioKeyDown($event, button)"
+            #radioInput
+          >
+            <span class="button-label">{{button.label}}</span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</ng-template>

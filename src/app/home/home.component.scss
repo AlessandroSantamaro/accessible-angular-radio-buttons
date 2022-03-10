@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.radio {
+  &-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-item {
+    margin: 50px 50px;
+  }
+}

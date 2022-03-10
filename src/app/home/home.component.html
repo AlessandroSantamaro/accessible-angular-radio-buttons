@@ -1,0 +1,22 @@
+<div>
+  <div class="header">
+    <h1>Accessible radio buttons examples in Angular</h1>
+  </div>
+  <div class="radio-container">
+    <div class="radio-item">
+      <app-radio-buttons
+        [radioButtons]="radioButtons"
+        [title]="'Default radio buttons'"
+        (buttonChange)="onButtonClick($event)"
+      ></app-radio-buttons>
+    </div>
+    <div class="radio-item">
+      <app-radio-buttons
+        [radioButtons]="radioButtons"
+        [title]="'Role radio buttons'"
+        [mode]="'buttons'"
+        (buttonChange)="onButtonClick($event)"
+      ></app-radio-buttons>
+    </div>
+  </div>
+</div>
