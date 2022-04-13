@@ -14,3 +14,6 @@ Run `npm start` to start the app. Navigate to `http://localhost:4200/` and test 
 ## Running end-to-end tests
 
 Run `ng test` to run the app tests.
+
+## Demo
+![Demo app](https://github.com/AlessandroSantamaro/accessible-angular-radio-buttons/blob/master/src/assets/images/demo.jpg?raw=true)
